@@ -1,4 +1,4 @@
-import 'package:app_frame/src/auth_stack.dart';
+import 'package:app_frame/src/navigations/auth_wrapper.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Estate App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AuthStack(),
+      home: const AuthenticationWrapper(),
     );
   }
 }
