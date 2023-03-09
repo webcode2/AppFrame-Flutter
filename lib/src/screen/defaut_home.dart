@@ -9,15 +9,15 @@ class DefaultHomeScreen extends StatefulWidget {
 
 class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
   final List<String> _fakeData = [
-    'Item 1',
+    'Savior',
     'Item 2',
     'Item 3',
     'Item 4',
     'Item 5',
-    'Item 6',
+    'Peter',
     'Item 7',
     'Item 8',
-    'Item 9',
+    'Adesuwa',
     'Item 10',
   ];
   @override
@@ -27,28 +27,96 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Column(children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              child: Card(
-                  elevation: 10,
-                  child: Column(
-                    children: [
-                      Text(
+            Card(
+                elevation: 10,
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: AlignmentDirectional.topEnd,
+                      child: Text(
                         DateTime.now().toIso8601String(),
                       ),
-                    ],
-                  )),
-            ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Access Code",
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontFamily: "Source Sans Pro",
+                              fontWeight: FontWeight.w700),
+                        ),
+                        Text(
+                          "____",
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontFamily: "Source Sans Pro",
+                              fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                    Container(
+                      alignment: AlignmentDirectional.topStart,
+                      child: const Text(
+                        "Hi Goog Morning Peterson",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Guest",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "Source Sans Pro",
+                              fontWeight: FontWeight.w700),
+                        ),
+                        Text(
+                          "Peterson Brown",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "Source Sans Pro",
+                              fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "expires in :",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "Source Sans Pro",
+                              fontWeight: FontWeight.w700),
+                        ),
+                        Text(
+                          "6hours",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "Source Sans Pro",
+                              fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ],
+                )),
             Expanded(
               child: ListView.builder(
                 itemCount: _fakeData.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
+                    elevation: 2,
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
                     shadowColor: Colors.green.shade300,
-                    color: Colors.white,
-                    elevation: 5,
+                    shape: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                            color: Colors.green.shade800, width: .5)),
                     child: ListTile(
                       leading: const Icon(
                         Icons.person,
@@ -65,7 +133,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                       ),
                       subtitle: Text('This is item $index'),
                       onTap: () {
-// Do something when the user taps on the list tile
+                        //TODO Do something when the user taps on the list tile
                       },
                     ),
                   );
@@ -79,7 +147,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
         backgroundColor: Colors.green.shade600,
         elevation: 8,
         child: const Icon(
-          Icons.add,
+          Icons.edit,
           size: 30,
         ),
         onPressed: () {},

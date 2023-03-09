@@ -3,66 +3,73 @@ import 'package:flutter/material.dart';
 class ProfileScreen extends StatelessWidget {
   final String name;
   final String email;
-  final String profileImageUrl;
+  final String address;
+  final String phone;
+  final String registeredDate;
+  final String hostBy;
 
-  const ProfileScreen({
+  ProfileScreen({
     super.key,
     required this.name,
     required this.email,
-    required this.profileImageUrl,
+    required this.address,
+    required this.phone,
+    required this.registeredDate,
+    required this.hostBy,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-      ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 16),
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 50.0,
-                  backgroundImage: NetworkImage(profileImageUrl),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  name,
-                  style: TextStyle(fontSize: 24.0),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  email,
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Name: $name',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(
-            child: Container(
-              color: Colors.grey[200],
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Bio',
-                      style: TextStyle(fontSize: 20.0),
-                    ),
-                    SizedBox(height: 8.0),
-                    Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, nisl ac eleifend pharetra, lorem justo tristique urna, vel luctus metus felis vel dui.',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                  ],
-                ),
-              ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Email: $email',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Address: $address',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Phone: $phone',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Registered Date: $registeredDate',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Hosted By: $hostBy',
+              style: TextStyle(fontSize: 18),
             ),
           ),
         ],
