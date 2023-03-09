@@ -24,7 +24,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
   void _checkIfLoggedIn() async {
     // TODO Add your authentication logic here
 
-    bool isLoggedIn = true;
+    bool isLoggedIn = false;
     setState(() {
       _isLoggedIn = isLoggedIn;
     });

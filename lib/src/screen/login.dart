@@ -1,6 +1,7 @@
 import 'package:app_frame/src/screen/registration.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +18,44 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green.shade50,
+      appBar: AppBar(
+        elevation: 0,
+        automaticallyImplyLeading: true,
+        backgroundColor: Colors.white,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+            systemNavigationBarColor: Colors.white,
+            systemNavigationBarIconBrightness:
+                Brightness.dark, // Navigation bar
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark // Status bar
+            ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RegistrationScreen()),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStatePropertyAll(Colors.green.shade100),
+              ),
+              child: Text(
+                "Register",
+                style: TextStyle(
+                  letterSpacing: 2.3,
+                  fontSize: 18,
+                  color: Colors.blue.shade900,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Container(
           constraints: const BoxConstraints.expand(),
@@ -24,35 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               // transform: GradientRotation(1),
-              colors: [Colors.green.shade50, Colors.green.shade200])),
+              colors: [Colors.white, Colors.green.shade100])),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  alignment: AlignmentDirectional.topEnd,
-                  padding: const EdgeInsetsDirectional.symmetric(
-                      horizontal: 20, vertical: 20),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegistrationScreen()),
-                      );
-                    },
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll(Colors.green.shade100)),
-                    child: Text(
-                      "Register",
-                      style: TextStyle(
-                        letterSpacing: 2.3,
-                        fontSize: 18,
-                        color: Colors.blue.shade900,
-                      ),
-                    ),
-                  ),
-                ),
                 Image.asset(
                   'assets/images/IT_DEV_Logo_Original.png',
                   width: 350,
@@ -95,11 +109,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   child: ElevatedButton(
-                    style: const ButtonStyle(
-                        minimumSize: MaterialStatePropertyAll(
+                    style: ButtonStyle(
+                        elevation: const MaterialStatePropertyAll(4),
+                        minimumSize: const MaterialStatePropertyAll(
                           Size.fromHeight(50),
                         ),
-                        backgroundColor: MaterialStatePropertyAll(Colors.blue)),
+                        backgroundColor:
+                            MaterialStatePropertyAll(Colors.green.shade500)),
                     onPressed: () {
                       // perform login logic here
                       if (kDebugMode) {
@@ -107,11 +123,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         print('Password: ${_passwordController.text}');
                       }
                     },
-                    child: const Padding(
-                      padding: EdgeInsets.all(18.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
                       child: Text(
                         'LOGIN',
                         style: TextStyle(
+                            color: Colors.blue.shade800,
                             letterSpacing: 2.5,
                             fontFamily: 'Source Sans Pro',
                             fontWeight: FontWeight.w300,

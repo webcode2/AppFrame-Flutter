@@ -1,4 +1,6 @@
+import 'package:app_frame/src/navigations/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DefaultHomeScreen extends StatefulWidget {
   const DefaultHomeScreen({Key? key}) : super(key: key);
@@ -23,6 +25,36 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.grey),
+        systemOverlayStyle: const SystemUiOverlayStyle(
+            systemNavigationBarColor: Colors.green, // Navigation bar
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark // Status bar
+            ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.green,
+            ),
+            onPressed: () {
+              // do something
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.notifications,
+              color: Colors.green,
+            ),
+            onPressed: () {
+              // do something
+            },
+          ),
+        ],
+      ),
+      drawer: const MyDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),

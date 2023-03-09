@@ -34,123 +34,137 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         iconTheme: const IconThemeData(color: Colors.black54),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/IT_DEV_Logo_Original.png',
-                    width: 350,
-                    height: 220,
-                    fit: BoxFit.contain,
-                  ),
-                  const SizedBox(height: 30),
-                  TextFormField(
-                    controller: _nameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Name',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
+        child: Container(
+          constraints: const BoxConstraints.expand(),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              // transform: GradientRotation(1),
+              colors: [Colors.white, Colors.green.shade100],
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/IT_DEV_Logo_Original.png',
+                      width: 350,
+                      height: 220,
+                      fit: BoxFit.contain,
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your name.';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your email.';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _phoneController,
-                    keyboardType: TextInputType.phone,
-                    decoration: const InputDecoration(
-                      labelText: 'Phone',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your phone number.';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _passwordController,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password.';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _invitationController,
-                    decoration: const InputDecoration(
-                        labelText: 'Invitation Code',
+                    const SizedBox(height: 30),
+                    TextFormField(
+                      controller: _nameController,
+                      decoration: const InputDecoration(
+                        labelText: 'Name',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        prefixIcon: Icon(Icons.shield)),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your invitation code.';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    style: const ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(
-                        Size.fromHeight(50),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your name.';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: 'Email',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email.';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: _phoneController,
+                      keyboardType: TextInputType.phone,
+                      decoration: const InputDecoration(
+                        labelText: 'Phone',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your phone number.';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        labelText: 'Password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password.';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: _invitationController,
+                      decoration: const InputDecoration(
+                          labelText: 'Invitation Code',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          prefixIcon: Icon(Icons.shield)),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your invitation code.';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          elevation: const MaterialStatePropertyAll(4),
+                          minimumSize: const MaterialStatePropertyAll(
+                            Size.fromHeight(50),
+                          ),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.green.shade500)),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // TODO: Register user with name, email, phone, password, and invitation code.
+                        }
+                      },
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                            color: Colors.blue.shade800,
+                            letterSpacing: 2,
+                            fontFamily: 'Source Sans Pro',
+                            fontSize: 25),
                       ),
                     ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // TODO: Register user with name, email, phone, password, and invitation code.
-                      }
-                    },
-                    child: const Text(
-                      'Register',
-                      style: TextStyle(
-                          letterSpacing: 2,
-                          fontFamily: "Source Sans Pro",
-                          fontSize: 25),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
