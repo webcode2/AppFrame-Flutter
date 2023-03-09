@@ -29,10 +29,11 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.grey),
         systemOverlayStyle: const SystemUiOverlayStyle(
-            systemNavigationBarColor: Colors.green, // Navigation bar
-            statusBarColor: Colors.white,
-            statusBarIconBrightness: Brightness.dark // Status bar
-            ),
+          systemNavigationBarColor: Colors.white60, // Navigation bar
+          systemNavigationBarIconBrightness: Brightness.dark, // Navigation bar
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -60,81 +61,93 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Column(children: [
             Card(
-                elevation: 10,
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: AlignmentDirectional.topEnd,
-                      child: Text(
-                        DateTime.now().toIso8601String(),
+                shadowColor: Colors.transparent,
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                color: Colors.white,
+                elevation: 4,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: Column(
+                    children: [
+                      Container(
+                        alignment: AlignmentDirectional.topEnd,
+                        child: Text(
+                          DateTime.now().toIso8601String(),
+                        ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Access Code",
+                      const SizedBox(height: 15),
+                      Container(
+                        alignment: AlignmentDirectional.topStart,
+                        child: Text(
+                          "Hi Good Morning Peterson",
                           style: TextStyle(
-                              fontSize: 40,
-                              fontFamily: "Source Sans Pro",
-                              fontWeight: FontWeight.w700),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                              color: Colors.green.shade800),
                         ),
-                        Text(
-                          "____",
-                          style: TextStyle(
-                              fontSize: 40,
-                              fontFamily: "Source Sans Pro",
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    Container(
-                      alignment: AlignmentDirectional.topStart,
-                      child: const Text(
-                        "Hi Goog Morning Peterson",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Guest",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "Source Sans Pro",
-                              fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          "Peterson Brown",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "Source Sans Pro",
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "expires in :",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "Source Sans Pro",
-                              fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          "6hours",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "Source Sans Pro",
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                  ],
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "Access Code",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Source Sans Pro",
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            "3095",
+                            style: TextStyle(
+                                fontSize: 45,
+                                fontFamily: "Source Sans Pro",
+                                fontWeight: FontWeight.w900),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "Guest",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Source Sans Pro",
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            "Peterson Brown",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Source Sans Pro",
+                                fontWeight: FontWeight.w500),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "expires in :",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Source Sans Pro",
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            "6hours",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Source Sans Pro",
+                                fontWeight: FontWeight.w700),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 )),
             Expanded(
               child: ListView.builder(
@@ -147,8 +160,8 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                     shadowColor: Colors.green.shade300,
                     shape: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(
-                            color: Colors.green.shade800, width: .5)),
+                        borderSide:
+                            BorderSide(color: Colors.black87, width: .5)),
                     child: ListTile(
                       leading: const Icon(
                         Icons.person,
@@ -159,7 +172,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                         onPressed: () {},
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(Colors.green.shade600),
+                              MaterialStatePropertyAll(Colors.redAccent),
                         ),
                         child: const Text("Sign Out"),
                       ),
