@@ -23,7 +23,7 @@ class MyDrawer extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Your Name',
+                  'Savior Israel',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -31,7 +31,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'your.email@example.com',
+                  'SaviorIsrael@gmail.com',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -46,8 +46,18 @@ class MyDrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.home),
+            leading: const Icon(Icons.person),
             title: const Text('Profile'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.chat_rounded),
+            title: const Text('Chat'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.shield_moon_outlined),
+            title: const Text('E.S.E   ( Estate Security Emergency )'),
             onTap: () {},
           ),
           ListTile(
@@ -60,6 +70,11 @@ class MyDrawer extends StatelessWidget {
             title: const Text('About'),
             onTap: () {},
           ),
+          Container(
+            // margin: EdgeInsets.only(top: ),
+            alignment: AlignmentDirectional.bottomStart,
+            child: const Text("Developer@Eazycode.Tech"),
+          )
         ],
       ),
     );

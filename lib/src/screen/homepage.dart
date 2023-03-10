@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
     ScreenOne(),
     ScreenTwo(),
     ChatScreen(),
-     ProfileScreen(),
+    ProfileScreen(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -43,16 +43,12 @@ class _HomeState extends State<Home> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history_sharp),
-            label: 'History',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.login),
+            icon: Icon(Icons.security_outlined),
             label: 'Quick token',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
+            icon: Icon(Icons.history_sharp),
+            label: 'History',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

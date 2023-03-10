@@ -1,6 +1,8 @@
 import 'package:app_frame/src/navigations/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class DefaultHomeScreen extends StatefulWidget {
   const DefaultHomeScreen({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class DefaultHomeScreen extends StatefulWidget {
 
 class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
   final List<String> _fakeData = [
-    'Savior',
+    'Isokariari Nyingibo Jane Daimete Jack',
     'Item 2',
     'Item 3',
     'Item 4',
@@ -61,10 +63,12 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Column(children: [
             Card(
-                shadowColor: Colors.transparent,
                 margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                 color: Colors.white,
-                elevation: 4,
+                shape: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black54, width: .3),
+                ),
+                elevation: 5,
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -73,7 +77,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                       Container(
                         alignment: AlignmentDirectional.topEnd,
                         child: Text(
-                          DateTime.now().toIso8601String(),
+                          DateFormat("dd-MM-yyyy").format(DateTime.now()),
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -156,27 +160,40 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                   return Card(
                     elevation: 2,
                     margin:
-                        const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 3),
                     shadowColor: Colors.green.shade300,
                     shape: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                         borderSide:
-                            BorderSide(color: Colors.black87, width: .5)),
+                            const BorderSide(color: Colors.black54, width: .3)),
                     child: ListTile(
                       leading: const Icon(
                         Icons.person,
                         size: 60,
                       ),
-                      title: Text(_fakeData[index]),
-                      trailing: ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.redAccent),
+                      title: Text(
+                        _fakeData[index],
+                        style: const TextStyle(
+                          fontSize: 23,
+                          letterSpacing: 1.5,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Source Sans Pro",
                         ),
-                        child: const Text("Sign Out"),
                       ),
-                      subtitle: Text('This is item $index'),
+                      trailing: TextButton(
+                        onPressed: () {},
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                              Color.fromARGB(153, 255, 10, 10)),
+                        ),
+                        child: const Text(
+                          "Sign Out",
+                          style: TextStyle(color: Colors.black54, fontSize: 18),
+                        ),
+                      ),
+                      subtitle: Text(timeago.format(DateTime.now().subtract(
+                          const Duration(
+                              days: 0, hours: 10, minutes: 2, seconds: 58)))),
                       onTap: () {
                         //TODO Do something when the user taps on the list tile
                       },
@@ -192,10 +209,92 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
         backgroundColor: Colors.green.shade600,
         elevation: 8,
         child: const Icon(
-          Icons.edit,
+          Icons.add,
           size: 30,
         ),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet<void>(
+            useSafeArea: true,
+            isScrollControlled: true,
+            enableDrag: true,
+            isDismissible: false,
+            context: context,
+            builder: (BuildContext context) {
+              final guestNameController = TextEditingController();
+              final commentController = TextEditingController();
+              return Container(
+                color: Colors.white54,
+                child: SafeArea(
+                  child: SingleChildScrollView(
+                    child: AnimatedPadding(
+                      padding: MediaQuery.of(context).viewInsets,
+                      duration: const Duration(milliseconds: 100),
+                      curve: Curves.decelerate,
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            alignment: AlignmentDirectional.topEnd,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Colors.red.shade400),
+                                  // iconColor: const MaterialStatePropertyAll(
+                                  //     Colors.red),
+                                ),
+                                child: const Icon(Icons.arrow_downward_sharp),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: TextFormField(
+                              autofocus: true,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                backgroundColor: Colors.white60,
+                              ),
+                              controller: guestNameController,
+                              decoration: InputDecoration(
+                                label: const Text("Name"),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: TextFormField(
+                              autofocus: true,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                backgroundColor: Colors.white60,
+                              ),
+                              controller: commentController,
+                              decoration: InputDecoration(
+                                label: const Text("Comment"),
+                                hintText: "optional",
+                                // disabledBorder:InputBorder.none,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
