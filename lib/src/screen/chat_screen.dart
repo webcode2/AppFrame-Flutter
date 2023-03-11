@@ -23,7 +23,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _sendMessage() {
-    if (_textController.text.isNotEmpty) {
+    if (_textController.text.trim().isNotEmpty) {
       setState(() {
         _messages.add(_textController.text);
         _textController.clear();

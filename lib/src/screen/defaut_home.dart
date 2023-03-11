@@ -24,6 +24,9 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
     'Adesuwa',
     'Item 10',
   ];
+  final guestNameController = TextEditingController();
+  final commentController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,13 +41,8 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.green,
-            ),
-            onPressed: () {
-              // do something
-            },
+            icon: const Icon(Icons.mode_night_outlined),
+            onPressed: () {},
           ),
           IconButton(
             icon: const Icon(
@@ -63,7 +61,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Column(children: [
             Card(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 color: Colors.white,
                 shape: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black54, width: .3),
@@ -220,8 +218,6 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
             isDismissible: false,
             context: context,
             builder: (BuildContext context) {
-              final guestNameController = TextEditingController();
-              final commentController = TextEditingController();
               return Container(
                 color: Colors.white54,
                 child: SafeArea(
@@ -233,59 +229,57 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                       child: Column(
                         children: <Widget>[
                           Container(
-                            alignment: AlignmentDirectional.topEnd,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(
-                                      Colors.red.shade400),
-                                  // iconColor: const MaterialStatePropertyAll(
-                                  //     Colors.red),
-                                ),
-                                child: const Icon(Icons.arrow_downward_sharp),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
+                            margin: const EdgeInsets.only(bottom: 20),
+                            alignment: Alignment.topLeft,
+                            child: IconButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStatePropertyAll(
+                                    Colors.red.shade400),
+                                iconColor:
+                                    const MaterialStatePropertyAll(Colors.red),
                               ),
+                              icon: Icon(Icons.arrow_downward_sharp,
+                                  color: Colors.red.shade600),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              tooltip: "Tap or Slide to close Action",
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 20, left: 20, top: 10, bottom: 20),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    maxLength: 40,
+                                    autofocus: true,
+                                    style: const TextStyle(
+                                      fontSize: 23,
+                                    ),
+                                    controller: guestNameController,
+                                    decoration: const InputDecoration(
+                                        hintText: "Name",
+                                        contentPadding: EdgeInsets.only(
+                                            bottom: 2.0, right: 5, left: 5),
+                                        border: UnderlineInputBorder()),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.send_rounded,
+                                      size: 35, color: Colors.grey),
+                                )
+                              ],
                             ),
                           ),
                           Container(
-                            padding: const EdgeInsets.all(10),
-                            child: TextFormField(
-                              autofocus: true,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                backgroundColor: Colors.white60,
-                              ),
-                              controller: guestNameController,
-                              decoration: InputDecoration(
-                                label: const Text("Name"),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            child: TextFormField(
-                              autofocus: true,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                backgroundColor: Colors.white60,
-                              ),
-                              controller: commentController,
-                              decoration: InputDecoration(
-                                label: const Text("Comment"),
-                                hintText: "optional",
-                                // disabledBorder:InputBorder.none,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ),
+                            alignment: Alignment.topRight,
+                            child: TextButton(
+                                child: const Text("Add Comment"),
+                                onPressed: () {}),
+                          )
                         ],
                       ),
                     ),

@@ -54,6 +54,10 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.more_horiz_rounded),
+            label: 'More',
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
